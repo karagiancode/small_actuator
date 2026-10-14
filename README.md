@@ -37,7 +37,7 @@ cad/
   stl/      Printable parts: base, gamma-nema17, L1, L2, grabberbase
 docs/
   images/   Renders and photos
-hardware/   Bill of materials (BOM.md, bom.csv); wiring diagram to be added
+hardware/   Bill of materials (BOM.md, bom.csv); wiring diagram in WIRING.md
 ```
 
 ## Design Notes

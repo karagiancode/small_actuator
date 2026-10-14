@@ -5,6 +5,7 @@ Unit prices are per piece. **TBD** means the price or quantity is not yet known.
 | Category | Item | Specification | Qty | Unit (EUR) | Line (EUR) | Status | Notes |
 |---|---|---|---|---|---|---|---|
 | Control | Single-board computer | Raspberry Pi 5 | 1 | TBD | TBD | To buy | ROS 2 master |
+| Power | Pi 5 power supply | USB-C, 27 W | 1 | TBD | TBD | To buy | Powers the Pi 5 and, through USB, both Picos |
 | Control | Microcontroller | Raspberry Pi Pico | 2 | TBD | TBD | To buy | Real-time stepper control, micro-ROS slaves |
 | Actuation | NEMA 17 stepper motor | 42BYGH603 | 2 | 15.00 | 30.00 | Owned | Base yaw, shoulder pitch |
 | Actuation | Geared stepper motor | 28BYJ-48 | 2 | 5.00 | 10.00 | Owned | Elbow, wrist pitch |
@@ -19,7 +20,7 @@ Unit prices are per piece. **TBD** means the price or quantity is not yet known.
 | Transmission | GT2 pulley, aluminium | 48T, 5 mm bore | 1 | 3.00 | 3.00 | Owned | 4:1 reduction |
 | Bearings | Skateboard bearing | 608-2RS | TBD | TBD | TBD | Owned (qty TBD) | Seen in the CAD |
 | Power | Power supply | 12 V, 5 A | 1 | 5.00 | 5.00 | Owned |  |
-| Power | Buck converter | 12 V to 5 V, rated for load | 1 | TBD | TBD | To buy | 5 V rail for Pi 5 / Pico logic and SG90; size for the Pi 5 (up to 5 A) or use a separate USB-C supply |
+| Power | Buck converter | 12 V to 5 V, 2 A or more | 1 | TBD | TBD | To buy | 5 V rail for the SG90 gripper only; the Picos are powered over USB from the Pi 5 |
 | Fasteners | Screw | M5 x 70 mm | 1 | 0.20 | 0.20 | Owned |  |
 | Fasteners | Screw | M5 x 33 mm | 10 | 0.20 | 2.00 | Owned |  |
 | Fasteners | Nut | M5 | 20 | 0.20 | 4.00 | Owned |  |
@@ -30,6 +31,6 @@ Unit prices are per piece. **TBD** means the price or quantity is not yet known.
 
 - **28BYJ-48 voltage.** Both the 5 V and 12 V versions exist. Confirm the version on the label matches the rail it is driven from.
 - **DRV8825 current limit.** Set the reference voltage for the rated current of the 42BYGH603 before connecting the motor, and keep a 47 to 100 uF capacitor across the driver supply pins.
-- **Supply split.** 12 V feeds the motor drivers; the Pi 5, Pico and SG90 need a regulated 5 V rail. All grounds must be common.
+- **Supply split.** 12 V feeds the motor drivers and the 28BYJ-48 boards; the SG90 uses the 5 V buck rail; the Pi 5 and both Picos use the USB-C supply. All grounds must be common.
 - **Current budget.** Check the combined peak motor current against the 5 A supply rating before running several joints at once.
 - **Encoder mounting.** A magnetic encoder needs a diametrically magnetised magnet on a shaft end that is accessible, either the rear of a dual-shaft motor or the output shaft. Check which is available on the 42BYGH603.
