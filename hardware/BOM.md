@@ -10,9 +10,9 @@ Unit prices are per piece. **TBD** means the price or quantity is not yet known.
 | Actuation | NEMA 17 stepper motor | 42BYGH603 | 2 | 15.00 | 30.00 | Owned | Base yaw, shoulder pitch |
 | Actuation | Geared stepper motor | 28BYJ-48 | 2 | 5.00 | 10.00 | Owned | Elbow, wrist pitch |
 | Actuation | Micro servo | SG90 | 1 | TBD | TBD | Owned (verify) | Gripper |
-| Drivers | Stepper driver | DRV8825 | 2 | 2.00 | 4.00 | Owned | One per NEMA 17 |
-| Drivers | Stepper driver | ULN2003APG | 2 | 2.00 | 4.00 | Owned | One per 28BYJ-48 |
-| Drivers | Breakout / driver board | 12 V input | 1 | TBD | TBD | Owned | Carries 12 V to the motor drivers |
+| Drivers | Stepper driver | DRV8825 | 2 | 2.00 | 4.00 | Owned | One per NEMA 17; three fitted on the shield, two used |
+| Drivers | ULN2003 driver board | ULN2003APG, 7-channel, 5-12 V | 2 | 2.00 | 4.00 | Owned | One per 28BYJ-48; IN1 to IN4 used |
+| Drivers | CNC shield | Arduino CNC Shield V3, 12-36 V input | 1 | TBD | TBD | Owned | Holds the DRV8825 modules and carries 12 V to them; used with a Pico, not an Arduino |
 | Feedback | Magnetic encoder | AS5600 module (proposed) | 1 | TBD | TBD | To buy | First closed-loop joint, for PID; I2C, 12-bit |
 | Feedback | Diametric magnet | 6 x 2.5 mm (proposed) | 1 | TBD | TBD | To buy | Mounted on the shaft of the encoded joint |
 | Transmission | GT2 timing belt | 202 mm | 1 | 2.00 | 2.00 | Owned |  |
