@@ -1,0 +1,16 @@
+Category,Item,Specification,Qty,Cost_EUR,Status,Notes
+Actuation,NEMA 17 stepper motor,42BYGH603,2,15.00,Owned,Base yaw + shoulder pitch (cost for the pair)
+Actuation,Geared stepper motor,28BYJ-48,2,5.00,Owned,Elbow + wrist pitch (cost for the pair)
+Actuation,Micro servo,SG90,1,,To confirm,Gripper; not listed in original BOM
+Drivers,Stepper driver,DRV8825,2,2.00,Owned,One per NEMA 17
+Drivers,Stepper driver,ULN2003APG,2,2.00,Owned,One per 28BYJ-48
+Transmission,GT2 timing belt,202 mm,1,2.00,Owned,
+Transmission,GT2 aluminium pulley,12T / 5 mm bore,1,2.50,Owned,
+Transmission,GT2 aluminium pulley,48T / 5 mm bore,1,3.00,Owned,4:1 reduction
+Bearings,Skateboard bearing,608-2RS,,,To confirm,Visible in the CAD; quantity to confirm
+Power,Power supply,12 V / 5 A,1,5.00,Owned,
+Power,Buck converter 12 V to 5 V,,1,,To confirm,For SG90 and logic; not listed in original BOM
+Control,Microcontroller,Raspberry Pi Pico,,,To confirm,Quantity depends on final architecture
+Fasteners,Screw,M5 x 70 mm,1,0.20,Owned,
+Fasteners,Screw,M5 x 33 mm,10,0.20,Owned,
+Fasteners,Nut,M5,20,0.20,Owned,
