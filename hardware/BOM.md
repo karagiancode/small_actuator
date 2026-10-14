@@ -1,30 +1,35 @@
 # Bill of Materials
 
-Costs are the figures from the original parts list. Where the original list gave one price for a pair, that price covers the pair. Items marked **To confirm** were visible in the CAD or are required for operation but were not on the original list.
+Unit prices are per piece. **TBD** means the price or quantity is not yet known.
 
-| Category | Item | Specification | Qty | Cost (EUR) | Notes |
-|---|---|---|---|---|---|
-| Actuation | NEMA 17 stepper | 42BYGH603 | 2 | 15.00 | Base yaw, shoulder pitch |
-| Actuation | Geared stepper | 28BYJ-48 | 2 | 5.00 | Elbow, wrist pitch |
-| Actuation | Micro servo | SG90 | 1 | to confirm | Gripper |
-| Drivers | Stepper driver | DRV8825 | 2 | 2.00 | For the NEMA 17 motors |
-| Drivers | Stepper driver | ULN2003APG | 2 | 2.00 | For the 28BYJ-48 motors |
-| Transmission | GT2 timing belt | 202 mm | 1 | 2.00 | |
-| Transmission | GT2 pulley, aluminium | 12T, 5 mm bore | 1 | 2.50 | |
-| Transmission | GT2 pulley, aluminium | 48T, 5 mm bore | 1 | 3.00 | 4:1 reduction |
-| Bearings | Skateboard bearing | 608-2RS | to confirm | to confirm | Seen in the CAD |
-| Power | Power supply | 12 V, 5 A | 1 | 5.00 | |
-| Power | Buck converter | 12 V to 5 V | 1 | to confirm | SG90 and logic supply |
-| Control | Microcontroller | Raspberry Pi Pico | to confirm | to confirm | |
-| Fasteners | Screw | M5 x 70 mm | 1 | 0.20 | |
-| Fasteners | Screw | M5 x 33 mm | 10 | 0.20 | |
-| Fasteners | Nut | M5 | 20 | 0.20 | |
+| Category | Item | Specification | Qty | Unit (EUR) | Line (EUR) | Status | Notes |
+|---|---|---|---|---|---|---|---|
+| Control | Single-board computer | Raspberry Pi 5 | 1 | TBD | TBD | To buy | ROS 2 master |
+| Control | Microcontroller | Raspberry Pi Pico | 2 | TBD | TBD | To buy | Real-time stepper control, micro-ROS slaves |
+| Actuation | NEMA 17 stepper motor | 42BYGH603 | 2 | 15.00 | 30.00 | Owned | Base yaw, shoulder pitch |
+| Actuation | Geared stepper motor | 28BYJ-48 | 2 | 5.00 | 10.00 | Owned | Elbow, wrist pitch |
+| Actuation | Micro servo | SG90 | 1 | TBD | TBD | Owned (verify) | Gripper |
+| Drivers | Stepper driver | DRV8825 | 2 | 2.00 | 4.00 | Owned | One per NEMA 17 |
+| Drivers | Stepper driver | ULN2003APG | 2 | 2.00 | 4.00 | Owned | One per 28BYJ-48 |
+| Drivers | Breakout / driver board | 12 V input | 1 | TBD | TBD | Owned | Carries 12 V to the motor drivers |
+| Feedback | Magnetic encoder | AS5600 module (proposed) | 1 | TBD | TBD | To buy | First closed-loop joint, for PID; I2C, 12-bit |
+| Feedback | Diametric magnet | 6 x 2.5 mm (proposed) | 1 | TBD | TBD | To buy | Mounted on the shaft of the encoded joint |
+| Transmission | GT2 timing belt | 202 mm | 1 | 2.00 | 2.00 | Owned |  |
+| Transmission | GT2 pulley, aluminium | 12T, 5 mm bore | 1 | 2.50 | 2.50 | Owned |  |
+| Transmission | GT2 pulley, aluminium | 48T, 5 mm bore | 1 | 3.00 | 3.00 | Owned | 4:1 reduction |
+| Bearings | Skateboard bearing | 608-2RS | TBD | TBD | TBD | Owned (qty TBD) | Seen in the CAD |
+| Power | Power supply | 12 V, 5 A | 1 | 5.00 | 5.00 | Owned |  |
+| Power | Buck converter | 12 V to 5 V, rated for load | 1 | TBD | TBD | To buy | 5 V rail for Pi 5 / Pico logic and SG90; size for the Pi 5 (up to 5 A) or use a separate USB-C supply |
+| Fasteners | Screw | M5 x 70 mm | 1 | 0.20 | 0.20 | Owned |  |
+| Fasteners | Screw | M5 x 33 mm | 10 | 0.20 | 2.00 | Owned |  |
+| Fasteners | Nut | M5 | 20 | 0.20 | 4.00 | Owned |  |
 
-**Listed total: EUR 37.10**, excluding the unconfirmed items.
+**Known total: EUR 66.70**, excluding items marked TBD.
 
 ## Design checks before powering up
 
-- **28BYJ-48 voltage.** The common version is rated 5 V; a 12 V version also exists. Check the label. A 5 V motor must not be driven from the 12 V rail.
-- **DRV8825 current limit.** Set the reference voltage for the rated current of the 42BYGH603 before connecting the motor, and add a 47 to 100 uF capacitor across the driver supply pins.
-- **Supply split.** The 12 V rail feeds the DRV8825 drivers. The SG90, the logic and, if applicable, the 5 V 28BYJ-48 motors need a separate regulated 5 V rail with a common ground.
-- **Current budget.** Add the peak current of all motors against the 5 A supply rating before running all joints at once.
+- **28BYJ-48 voltage.** Both the 5 V and 12 V versions exist. Confirm the version on the label matches the rail it is driven from.
+- **DRV8825 current limit.** Set the reference voltage for the rated current of the 42BYGH603 before connecting the motor, and keep a 47 to 100 uF capacitor across the driver supply pins.
+- **Supply split.** 12 V feeds the motor drivers; the Pi 5, Pico and SG90 need a regulated 5 V rail. All grounds must be common.
+- **Current budget.** Check the combined peak motor current against the 5 A supply rating before running several joints at once.
+- **Encoder mounting.** A magnetic encoder needs a diametrically magnetised magnet on a shaft end that is accessible, either the rear of a dual-shaft motor or the output shaft. Check which is available on the 42BYGH603.
